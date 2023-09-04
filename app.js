@@ -8,6 +8,7 @@ function createSquare(number, width) {
     square.classList.add("square");
     square.style.height = `${width}px`;
     square.style.width = `${width}px`;
+    registerEventListener(square);
     squares.push(square);
   }
   return squares;
@@ -20,4 +21,10 @@ function createGrid(dimension) {
   });
 }
 
-createGrid(8);
+function registerEventListener(node) {
+  node.addEventListener("mouseenter", (e) => {
+    e.target.style.backgroundColor = "magenta";
+  });
+}
+
+createGrid(30);
