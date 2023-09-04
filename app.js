@@ -1,6 +1,7 @@
 const grid = document.querySelector(".container");
 const gridSizeSlider = document.querySelector("#grid-size");
 const rgbRadioBtn = document.querySelector("#rgb-mode");
+const clearBtn = document.querySelector(".clear-btn");
 
 // function getGridSize() {
 //   let userInput = Math.floor(+prompt("Please enter grid size"));
@@ -66,5 +67,7 @@ grid.addEventListener("mouseover", (e) => {
     e.target.dataset.filled = true;
   }
 });
+
+clearBtn.addEventListener("click", () => createGrid(gridSizeSlider.value));
 
 createGrid(gridSizeSlider.value);

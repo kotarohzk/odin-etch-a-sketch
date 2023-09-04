@@ -33,14 +33,15 @@ body {
 }
 
 .grid-size,
-.colour-mode {
+.colour-mode,
+.clear {
   padding: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* .grid-size button {
+.clear button {
   padding: 10px 20px;
   background-color: #000;
   border: 1px solid #000;
@@ -48,8 +49,8 @@ body {
   font-family: inherit;
   color: #fff;
   transition: all 0.2s ease-in-out;
-} */
+}
 
-.grid-size button:hover {
+.clear button:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
