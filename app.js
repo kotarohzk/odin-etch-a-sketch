@@ -1,14 +1,15 @@
 const grid = document.querySelector(".container");
-const gridSizeBtn = document.querySelector(".grid-size");
+const gridSizeSlider = document.querySelector("#grid-size");
+const rgbRadioBtn = document.querySelector("#rgb-mode");
 
-function getGridSize() {
-  let userInput = Math.floor(+prompt("Please enter grid size"));
-  if (isNaN(userInput) || userInput < 1 || userInput > 100) {
-    alert("Please enter a valid integer between 1 to 100");
-  } else {
-    return userInput;
-  }
-}
+// function getGridSize() {
+//   let userInput = Math.floor(+prompt("Please enter grid size"));
+//   if (isNaN(userInput) || userInput < 1 || userInput > 100) {
+//     alert("Please enter a valid integer between 1 to 100");
+//   } else {
+//     return userInput;
+//   }
+// }
 
 function createSquare(dimension) {
   let squares = [];
@@ -17,7 +18,6 @@ function createSquare(dimension) {
     square.classList.add("square");
     square.dataset.filled = false;
     square.style.cssText = `height: calc(100% / ${dimension}); width: calc(100% / ${dimension})`;
-    // registerEventListener(square);
     squares.push(square);
   }
   return squares;
@@ -28,12 +28,6 @@ function createGrid(dimension) {
   grid.innerHTML = "";
   squares.forEach((square) => {
     grid.appendChild(square);
-  });
-}
-
-function registerEventListener(node) {
-  node.addEventListener("mouseenter", (e) => {
-    e.target.style.backgroundColor = "magenta";
   });
 }
 
@@ -49,8 +43,15 @@ function getRandomRGB() {
   return `rgb(${red}, ${green}, ${blue})`;
 }
 
-gridSizeBtn.addEventListener("click", () => {
-  let gridSize = getGridSize();
+function getSelectedColor(square) {
+  if (rgbRadioBtn.checked) {
+    return getRandomRGB();
+  }
+  return "magenta";
+}
+
+gridSizeSlider.addEventListener("change", () => {
+  let gridSize = gridSizeSlider.value;
   if (gridSize) {
     createGrid(gridSize);
   }
@@ -61,7 +62,9 @@ grid.addEventListener("mouseover", (e) => {
     e.target.classList.contains("square") &&
     e.target.dataset.filled === "false"
   ) {
-    e.target.style.backgroundColor = getRandomRGB();
+    e.target.style.backgroundColor = getSelectedColor();
     e.target.dataset.filled = true;
   }
 });
+
+createGrid(gridSizeSlider.value);
