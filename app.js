@@ -1,5 +1,15 @@
 const grid = document.querySelector(".container");
-let gridWidth = 300;
+const gridSizeBtn = document.querySelector(".grid-size");
+let gridWidth = 500;
+
+function getGridSize() {
+  let userInput = Math.floor(+prompt("Please enter grid size"));
+  if (isNaN(userInput) || userInput < 1 || userInput > 100) {
+    alert("Please enter a valid integer between 1 to 100");
+  } else {
+    return userInput;
+  }
+}
 
 function createSquare(number, width) {
   let squares = [];
@@ -27,4 +37,9 @@ function registerEventListener(node) {
   });
 }
 
-createGrid(30);
+gridSizeBtn.addEventListener("click", () => {
+  let gridSize = getGridSize();
+  if (gridSize) {
+    createGrid(gridSize);
+  }
+});

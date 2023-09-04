@@ -9,12 +9,14 @@
 body {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .container {
-  width: 300px;
+  width: 500px;
+  height: 500px;
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
