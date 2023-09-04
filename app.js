@@ -1,6 +1,5 @@
 const grid = document.querySelector(".container");
 const gridSizeBtn = document.querySelector(".grid-size");
-let gridWidth = 500;
 
 function getGridSize() {
   let userInput = Math.floor(+prompt("Please enter grid size"));
@@ -11,13 +10,12 @@ function getGridSize() {
   }
 }
 
-function createSquare(number, width) {
+function createSquare(dimension) {
   let squares = [];
-  for (let i = 0; i < number; i++) {
+  for (let i = 0; i < dimension * dimension; i++) {
     let square = document.createElement("div");
     square.classList.add("square");
-    square.style.height = `${width}px`;
-    square.style.width = `${width}px`;
+    square.style.cssText = `height: calc(100% / ${dimension}); width: calc(100% / ${dimension})`;
     registerEventListener(square);
     squares.push(square);
   }
@@ -25,7 +23,8 @@ function createSquare(number, width) {
 }
 
 function createGrid(dimension) {
-  let squares = createSquare(dimension * dimension, gridWidth / dimension);
+  let squares = createSquare(dimension);
+  grid.innerHTML = "";
   squares.forEach((square) => {
     grid.appendChild(square);
   });

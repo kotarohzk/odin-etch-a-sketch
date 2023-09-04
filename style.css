@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 *,
 *::before,
 *::after {
@@ -10,8 +12,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  font-family: "Noto Sans Mono", monospace;
+  padding: 20px;
 }
 
 .container {
@@ -26,4 +30,18 @@ body {
   border: 1px solid white;
   background-color: black;
   flex-shrink: 0;
+}
+
+.grid-size button {
+  padding: 10px 20px;
+  background-color: #000;
+  border: 1px solid #000;
+  border-radius: 20px;
+  font-family: inherit;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.grid-size button:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
